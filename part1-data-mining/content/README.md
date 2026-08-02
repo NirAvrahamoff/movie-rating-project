@@ -41,7 +41,7 @@ The final dataset contains **5,000 movies** collected from three sources:
 ## How It Works
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/NirAvrahamoff/movie-dataset-mining/f235dbdd664a70f89231b2a36ee4c4092eb62854/pipeline.png" width="900">
+<img src="https://raw.githubusercontent.com/NirAvrahamoff/movie-rating-project/main/part1-data-mining/content/pipeline.png" width="900">
 </div>
 
 The data collection pipeline runs in 4 steps:
