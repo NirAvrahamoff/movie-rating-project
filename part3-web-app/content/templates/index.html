@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineScore — Predict Your Film's Rating</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='22' fill='%23f5c518'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────── -->
+<nav class="nav">
+    <div class="container nav-inner">
+        <a href="/" class="nav-logo">
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <circle cx="16" cy="16" r="13.5" stroke="#f5c518" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="5"    stroke="#f5c518" stroke-width="1.5"/>
+                <circle cx="16"   cy="4"   r="1.8" fill="#f5c518"/>
+                <circle cx="25.6" cy="10"  r="1.8" fill="#f5c518"/>
+                <circle cx="25.6" cy="22"  r="1.8" fill="#f5c518"/>
+                <circle cx="16"   cy="28"  r="1.8" fill="#f5c518"/>
+                <circle cx="6.4"  cy="22"  r="1.8" fill="#f5c518"/>
+                <circle cx="6.4"  cy="10"  r="1.8" fill="#f5c518"/>
+            </svg>
+            CINESCORE
+        </a>
+        <span class="nav-tag">RATING PREDICTOR</span>
+    </div>
+</nav>
+
+<main>
+
+<!-- ── Hero ────────────────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+    <div class="hero-grain"      aria-hidden="true"></div>
+    <div class="hero-bloom"      aria-hidden="true"></div>
+    <div class="hero-filmstrip"  aria-hidden="true"></div>
+    <div class="scroll-guide"    aria-hidden="true"><div class="scroll-guide-line"></div></div>
+
+    <div class="container">
+        <div class="hero-body">
+            <span class="hero-eyebrow">MACHINE LEARNING · IMDb-STYLE SCORES</span>
+
+            <h1 class="hero-headline" aria-label="What will your film be worth?">
+                <span class="hero-line"><span class="hli">WHAT WILL</span></span>
+                <span class="hero-line"><span class="hli">YOUR FILM</span></span>
+                <span class="hero-line hero-line--gold"><span class="hli">BE WORTH?</span></span>
+            </h1>
+
+            <p class="hero-sub">
+                Trained on 100,000&thinsp;+ IMDb titles. Enter your film's details&nbsp;— genre, runtime, language&nbsp;— and our Random Forest model predicts its score.
+            </p>
+
+            <a href="#predict" class="hero-cta" id="begin-cta">
+                <span>BEGIN PREDICTION</span>
+                <svg viewBox="0 0 20 20" fill="none" width="15" height="15" aria-hidden="true">
+                    <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.6"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── Form ────────────────────────────────────────────────────────── -->
+<section class="predict-section" id="predict">
+    <div class="container">
+
+        <div class="section-head">
+            <span class="snum">01</span>
+            <h2 class="stitle">FILM DETAILS</h2>
+            <span class="srule"></span>
+        </div>
+
+        <div class="form-card">
+            <form id="prediction-form" novalidate autocomplete="off">
+
+                <!-- Title -->
+                <div class="field">
+                    <label class="flabel" for="primaryTitle">FILM TITLE</label>
+                    <input type="text" id="primaryTitle" name="primaryTitle" class="finput"
+                           placeholder="e.g. The Shawshank Redemption" required>
+                </div>
+
+                <!-- Year + Runtime -->
+                <div class="field-row">
+                    <div class="field">
+                        <label class="flabel" for="startYear">RELEASE YEAR</label>
+                        <input type="number" id="startYear" name="startYear" class="finput"
+                               value="2024" min="1900" max="2050" required>
+                    </div>
+                    <div class="field">
+                        <label class="flabel" for="runtimeMinutes">
+                            RUNTIME <span class="funit">MIN</span>
+                        </label>
+                        <input type="number" id="runtimeMinutes" name="runtimeMinutes" class="finput"
+                               value="105" min="1" max="500" required>
+                    </div>
+                </div>
+
+                <!-- Genres -->
+                <div class="field">
+                    <label class="flabel">GENRES <span class="funit">SELECT ALL THAT APPLY</span></label>
+                    <div class="genre-grid">
+                        <label class="gpill"><input type="checkbox" name="genres" value="Drama"><span>Drama</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Comedy"><span>Comedy</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Documentary"><span>Documentary</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Romance"><span>Romance</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Action"><span>Action</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Crime"><span>Crime</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Thriller"><span>Thriller</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Horror"><span>Horror</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Adventure"><span>Adventure</span></label>
+                        <label class="gpill"><input type="checkbox" name="genres" value="Family"><span>Family</span></label>
+                    </div>
+                </div>
+
+                <!-- Language + Country -->
+                <div class="field-row">
+                    <div class="field">
+                        <label class="flabel" for="language">LANGUAGE</label>
+                        <div class="sel-wrap">
+                            <select id="language" name="language" class="fselect">
+                                <option value="English">English</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="German">German</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <svg class="sel-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="flabel" for="country">COUNTRY</label>
+                        <div class="sel-wrap">
+                            <select id="country" name="country" class="fselect">
+                                <option value="United States">United States</option>
+                                <option value="India">India</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="France">France</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Japan">Japan</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <svg class="sel-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.4"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error -->
+                <div id="error-banner" class="error-banner" role="alert" aria-live="polite"></div>
+
+                <!-- Submit -->
+                <button type="submit" id="predict-btn" class="predict-btn">
+                    <span class="btn-text">PREDICT RATING</span>
+                    <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ── Result ───────────────────────────────────────────────────────── -->
+<section class="result-section" id="result">
+    <div class="container">
+
+        <div class="section-head">
+            <span class="snum">02</span>
+            <h2 class="stitle">PREDICTED SCORE</h2>
+            <span class="srule"></span>
+        </div>
+
+        <div class="result-card">
+
+            <div class="result-header">
+                <h3 id="result-title" class="result-film-title"></h3>
+                <div id="result-chips" class="result-chips"></div>
+            </div>
+
+            <div class="gauge-wrap">
+                <div class="gauge-glow" id="gauge-glow"></div>
+                <svg class="gauge-svg" viewBox="0 0 260 260" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="gFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop id="gs1" offset="0%"   stop-color="#f5c518"/>
+                            <stop id="gs2" offset="100%" stop-color="#f5c518"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="g-ring"  cx="130" cy="130" r="122" fill="none" stroke-width="1"/>
+                    <circle class="g-track" cx="130" cy="130" r="108" fill="none" stroke-width="11"
+                            transform="rotate(-90 130 130)"/>
+                    <circle id="gauge-arc" class="g-arc" cx="130" cy="130" r="108" fill="none"
+                            stroke="url(#gFill)" stroke-width="11" stroke-linecap="round"
+                            transform="rotate(-90 130 130)"/>
+                    <text id="gauge-score" class="g-score" x="130" y="116" text-anchor="middle">0.0</text>
+                    <text class="g-denom"              x="130" y="146" text-anchor="middle">/ 10</text>
+                </svg>
+            </div>
+
+            <div id="stars-row" class="stars-row" aria-label="Star rating"></div>
+            <span id="rating-badge" class="rating-badge"></span>
+
+            <button id="predict-again-btn" class="predict-again-btn">
+                <svg viewBox="0 0 20 20" fill="none" width="14" height="14" aria-hidden="true">
+                    <path d="M3.5 10a6.5 6.5 0 1 0 1.45-4.1" stroke="currentColor"
+                          stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M3.5 4.5V10H9" stroke="currentColor"
+                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                PREDICT ANOTHER FILM
+            </button>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── Footer ───────────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <span>CINESCORE &mdash; RANDOM FOREST REGRESSOR</span>
+        <span>TRAINED ON 100K&thinsp;+ IMDb TITLES</span>
+    </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
