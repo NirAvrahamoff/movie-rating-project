@@ -21,7 +21,7 @@ Machine Learning models: Random Forest, Elastic Net, Decision Tree.
 ## Part 3 — Web App
 Flask web application for predicting movie ratings via UI.
 
-![Part 3 App](part3-web-app/content/The Great Nir.png)
+![Part 3 App](part3-web-app/content/The%20Great%20Nir.png)
 
 ---
 
