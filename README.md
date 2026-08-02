@@ -23,7 +23,3 @@ Flask web application for predicting movie ratings via UI.
 
 ![Part 3 App](part3-web-app/content/The%20Great%20Nir.png)
 
----
-
-## Authors
-Nir Avrahamoff & Itamar Rot
