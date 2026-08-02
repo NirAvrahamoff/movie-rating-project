@@ -71,11 +71,3 @@ Fill in the form with your film's details — title, year, runtime, genres, lang
 | `trained_model.pkl` | Trained model (place in project root) |
 | `requirements.txt` | Dependencies |
 
----
-
-## Team
-
-| Name | ID |
-|---|---|
-| Nir Avrahamoff | 209413053 |
-| Itamar Rot | 211994025 |
