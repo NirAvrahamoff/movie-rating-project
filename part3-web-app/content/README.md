@@ -2,8 +2,6 @@
 
 A Flask web app that predicts IMDb-style movie ratings (1–10) using a trained Random Forest model.
 
-> Companion app for the ML project: [movie-rating-predictor](https://github.com/NirAvrahamoff/movie-rating-predictor)
-
 ---
 
 ## Preview
