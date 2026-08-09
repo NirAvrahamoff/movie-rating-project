@@ -22,7 +22,7 @@ pip install -r requirements.txt
 python api.py
 ```
 
-Open: http://localhost:5000
+Open: https://movie-rating-project-242p.onrender.com/
 
 ### ⚠️ Important: Port Configuration
 
