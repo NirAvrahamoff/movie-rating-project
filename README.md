@@ -82,7 +82,7 @@ The graded version is kept in [archive/v1](archive/v1).
 movie-rating-project/
 ├── README.md
 ├── requirements.txt
-├── data/                 Modeling dataset (.csv.gz), our Q/R collection, and column descriptions
+├── data/                 Modeling dataset (3 compressed parts), our Q/R collection, and column descriptions
 ├── notebooks/            01 data collection · 02 rating model
 ├── src/features.py       Feature engineering shared by the notebook and the app
 ├── app/                  Flask app: api.py, templates, static files, model.joblib
