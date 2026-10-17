@@ -1,0 +1,4 @@
+-r app/requirements.txt
+matplotlib>=3.8
+jupyterlab
+pytest
