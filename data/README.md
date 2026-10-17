@@ -1,8 +1,15 @@
 # Data
 
-## movies_dataset.csv.gz (133,884 films)
+## movies_dataset_part1–3.csv.xz (133,884 films)
 
-The modeling dataset, compressed. It combines the course's IMDb extract with enrichment from Wikipedia and the OMDb API. `pandas.read_csv` reads the `.gz` file directly.
+The modeling dataset, split by rows into three xz-compressed parts to stay under GitHub's upload limit. It combines the course's IMDb extract with enrichment from Wikipedia and the OMDb API. To load it:
+
+```python
+from pathlib import Path
+import pandas as pd
+parts = sorted(Path("data").glob("movies_dataset_part*.csv.xz"))
+raw = pd.concat([pd.read_csv(p, low_memory=False) for p in parts], ignore_index=True)
+```
 
 | Column | Description | Used in the model |
 |---|---|---|
